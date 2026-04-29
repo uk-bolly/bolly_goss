@@ -14,15 +14,15 @@ usage() {
   echo "       Platform-spec format: <os>-<arch> if unsure try command 'go tool dist list' for possibly combinations"
   echo "       Example platform-spec: linux-amd64, windows-amd64, darwin-amd64, alpha-linux-amd64"
   echo "   -v <version-stamp>"
-  echo "       Version-stamp is optional, if not provided it will default to '0.0.0' or the value of TRAVIS_TAG env var if set"
+  echo "       Version-stamp is optional, if not provided it will default to '0.0.0'"
   exit 0
 }
 
-
+# Default values
 platform_spec="linux-amd64"
 output_dir="release/"
 output_fname="goss-${platform_spec}"
-version_stamp="${TRAVIS_TAG:-"0.0.0"}"
+version_stamp="0.0.0"
 
 # Split platform_spec into platform/arch segments
 IFS='- ' read -r -a segments <<< "${platform_spec}"
@@ -52,6 +52,9 @@ build_pkg() {
     github.com/goss-org/goss/cmd/goss
 
   chmod +x "${output}"
+}
+
+hash() {
 
   function __sha256sum {
     if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -61,8 +64,7 @@ build_pkg() {
     fi
   }
 
-
-(cd "$output_dir" && __sha256sum "${output_fname}" > "${output_fname}.sha256")
+  (cd "$output_dir" && __sha256sum "${output_fname}" > "${output_fname}.sha256")
 
 }
 
@@ -92,3 +94,4 @@ done
 
 output
 build_pkg
+hash
