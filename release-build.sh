@@ -1,7 +1,27 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-platform_spec="${1:?"Must supply name of release binary to build e.g. goss-linux-amd64"}"
+
+usage() {
+  echo "Usage: $0 -f <filename> -o <output-dir> -p <platform-spec> -v <version-stamp>"
+  echo "   -f <filename>"
+  echo "       Name of the release binary to build e.g. linux-amd64"
+  echo "       If not provided it will default to the value of platform-spec"
+  echo "   -o <output-dir>"
+  echo "       Output directory to place the release binary and checksum file"
+  echo "       If not provided it will default to 'release/'"
+  echo "   -p <platform-spec>"
+  echo "       Platform-spec format: <os>-<arch> if unsure try command 'go tool dist list' for possibly combinations"
+  echo "       Example platform-spec: linux-amd64, windows-amd64, darwin-amd64, alpha-linux-amd64"
+  echo "   -v <version-stamp>"
+  echo "       Version-stamp is optional, if not provided it will default to '0.0.0' or the value of TRAVIS_TAG env var if set"
+  exit 0
+}
+
+
+platform_spec="linux-amd64"
+output_dir="release/"
+output_fname="goss-${platform_spec}"
 version_stamp="${TRAVIS_TAG:-"0.0.0"}"
 
 # Split platform_spec into platform/arch segments
@@ -14,26 +34,61 @@ if [[ "${segments[0]}" == "alpha" ]]; then
   arch="${segments[2]}"
 fi
 
-output_dir="release/"
-output_fname="goss-${platform_spec}"
+
 if [[ "${os}" == "windows" ]]; then
   output_fname="${output_fname}.exe"
 fi
-output="${output_dir}/${output_fname}"
 
-GOOS="${os}" GOARCH="${arch}" CGO_ENABLED=0 go build \
-  -ldflags "-X github.com/goss-org/goss/util.Version=${version_stamp} -s -w" \
-  -o "${output}" \
-  github.com/goss-org/goss/cmd/goss
-
-chmod +x "${output}"
-
-function __sha256sum {
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-    shasum -a 256 "$1"
-  else
-    sha256sum "$1"
-  fi
+output(){
+  echo
+  output="${output_dir}/${output_fname}"
 }
 
+build_pkg() {
+    mkdir -p "${output_dir}"
+  GOOS="${os}" GOARCH="${arch}" CGO_ENABLED=0 go build \
+    -ldflags "-X github.com/goss-org/goss/util.Version=${version_stamp} -s -w" \
+    -o "${output}" \
+    github.com/goss-org/goss/cmd/goss
+
+  chmod +x "${output}"
+
+  function __sha256sum {
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      shasum -a 256 "$1"
+    else
+      sha256sum "$1"
+    fi
+  }
+
+
 (cd "$output_dir" && __sha256sum "${output_fname}" > "${output_fname}.sha256")
+
+}
+
+OPTSTRING="f:o:p:v:h"
+while getopts ${OPTSTRING} opt; do
+  case ${opt} in
+    f)
+      output_fname="${OPTARG}"
+      ;;
+    o)
+      output_dir="${OPTARG}"
+      ;;
+    p)
+      needs_arg=true;
+      platform_spec="${OPTARG}"
+      ;;
+    v)
+      version_stamp="${OPTARG}"
+      ;;
+    h)
+      usage
+      ;;
+    *)      usage
+      ;;
+  esac
+done
+
+output
+build_pkg
