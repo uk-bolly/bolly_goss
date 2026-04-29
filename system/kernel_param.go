@@ -3,8 +3,8 @@ package system
 import (
 	"context"
 
-	"github.com/achanda/go-sysctl"
 	"github.com/goss-org/goss/util"
+	"github.com/lorenzosaino/go-sysctl"
 )
 
 type KernelParam interface {

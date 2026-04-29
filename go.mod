@@ -4,13 +4,13 @@ go 1.26
 
 require (
 	github.com/Masterminds/sprig/v3 v3.3.0
-	github.com/achanda/go-sysctl v0.0.0-20160222034550-6be7678c45d2
 	github.com/blang/semver/v4 v4.0.0
 	github.com/cheekybits/genny v1.0.0
 	github.com/fatih/color v1.19.0
 	github.com/goss-org/GOnetstat v0.0.0-20230101144325-22be0bd9e64d
 	github.com/goss-org/go-ps v0.0.0-20230609005227-7b318e6a56e5
 	github.com/hashicorp/logutils v1.0.0
+	github.com/lorenzosaino/go-sysctl v0.3.1
 	github.com/miekg/dns v1.1.72
 	github.com/moby/sys/mountinfo v0.7.2
 	github.com/oleiade/reflections v1.1.0
@@ -29,6 +29,7 @@ require (
 
 require (
 	dario.cat/mergo v1.0.2 // indirect
+	github.com/BurntSushi/toml v1.3.2 // indirect
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver/v3 v3.4.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
@@ -53,11 +54,15 @@ require (
 	go.yaml.in/yaml/v2 v2.4.4 // indirect
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
 	golang.org/x/crypto v0.50.0 // indirect
+	golang.org/x/exp/typeparams v0.0.0-20220613132600-b0d781184e0d // indirect
+	golang.org/x/lint v0.0.0-20210508222113-6edffad5e616 // indirect
 	golang.org/x/mod v0.35.0 // indirect
 	golang.org/x/net v0.53.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
 	golang.org/x/sys v0.43.0 // indirect
 	golang.org/x/text v0.36.0 // indirect
 	golang.org/x/tools v0.44.0 // indirect
+	golang.org/x/tools/go/expect v0.1.1-deprecated // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
+	honnef.co/go/tools v0.3.2 // indirect
 )
