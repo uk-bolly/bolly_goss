@@ -23,3 +23,11 @@ tmp/
 /.venv
 ## MkDocs rendered site
 /site
+
+
+# AI
+IMPROVEMENTS_PLAN.md
+.claude/
+.cursor/
+agent.md
+AGENT.md
