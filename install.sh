@@ -29,8 +29,6 @@ elif [ "$(uname -m)" = "aarch32" ]; then
     arch="arm"
 elif [ "$(uname -m)" = "aarch64" ] || [ "$(uname -m)" = "arm64" ]; then
     arch="arm64"
-else
-    arch="386"
 fi
 
 url="https://github.com/goss-org/goss/releases/download/$GOSS_VER/goss-linux-$arch"

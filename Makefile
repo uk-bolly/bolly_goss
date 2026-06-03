@@ -97,25 +97,10 @@ test-windows-all: test-short-all test-int-windows-all
 
 test-int-64: rockylinux9 bullseye jammy alpine3 arch test-int-serve-linux-amd64
 test-int-32: rockylinux9-32 bullseye-32 alpine3-32
-test-int-darwin-all: test-int-validate-darwin-amd64 test-int-serve-darwin-amd64
+test-int-darwin-all: test-int-validate-darwin-amd64 test-int-serve-darwin-amd64 test-int-validate-darwin-arm64 test-int-serve-darwin-arm64
 test-int-windows-all: test-int-validate-windows-amd64 test-int-serve-windows-amd64
 test-int-all: test-int-32 test-int-64
 
-centos7-32: build
-	$(info INFO: Starting build $@)
-	cd integration-tests/ && ./test.sh centos7 386
-.PHONY: rockylinux9-32
-rockylinux9-32: build
-	$(info INFO: Starting build $@)
-	cd integration-tests/ && ./test.sh rockylinux9 386
-.PHONY: bullseye-32
-bullseye-32: build
-	$(info INFO: Starting build $@)
-	cd integration-tests/ && ./test.sh bullseye 386
-.PHONY: alpine3-32
-alpine3-32: build
-	$(info INFO: Starting build $@)
-	cd integration-tests/ && ./test.sh alpine3 386
 centos7: build
 	$(info INFO: Starting build $@)
 	cd integration-tests/ && ./test.sh centos7 amd64
