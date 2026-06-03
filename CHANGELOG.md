@@ -55,3 +55,4 @@ Replaced the external `dnstest.io` dependency with a local dnsmasq zone, making 
 - Updated CI workflows for latest Trivy versions
 - Updated `release-build.sh` for manual testing
 - github actions updated to later versions
+- removed building 386 systems
