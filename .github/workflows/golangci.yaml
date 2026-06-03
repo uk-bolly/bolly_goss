@@ -58,12 +58,12 @@ jobs:
 
   integration-test-other:
     needs: [coverage]
-    name: Integration tests (other)
+    name: Integration tests (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest, windows-latest]
+        os: [macos-13, macos-latest, windows-latest]
     steps:
       - uses: actions/checkout@v6.0.3
       - uses: actions/setup-go@v6.4.0
@@ -74,4 +74,5 @@ jobs:
         shell: bash
         run: |
           os_name="$(go env GOOS)"
-          make "test-int-${os_name}-all"
+          arch="$(go env GOARCH)"
+          make "test-int-validate-${os_name}-${arch}" "test-int-serve-${os_name}-${arch}"
