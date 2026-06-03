@@ -23,7 +23,15 @@ export GOSS_BINARY="${repo_root}/release/goss-${platform_spec}"
 log_info "Using: '${GOSS_BINARY}', cwd: '$(pwd)', os: ${os}"
 
 export GOSS_USE_ALPHA=1
-for file in `find integration-tests -type f -name "*.goss.yaml" | grep "${os}" | sort | uniq`; do
+# Prefer a platform-spec directory (e.g. darwin-arm64/) over an os-only directory (e.g. darwin/)
+# so that arch-specific command files use the correct binary. Fall back to os-only for platforms
+# that have not been split by arch (e.g. windows/).
+if find integration-tests -type d -name "${platform_spec}" | grep -q .; then
+  search_dir="${platform_spec}"
+else
+  search_dir="${os}"
+fi
+for file in $(find integration-tests -type f -name "*.goss.yaml" | grep "/${search_dir}/" | sort | uniq); do
   args=(
     "-g=${file}"
     "validate"
