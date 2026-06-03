@@ -1,16 +1,44 @@
 # Change logs from original goss-org/goss
 
-- Updated to go 1.26
-- Replaced module
-  - github.com/achanda/go-sysctl v0.0.0-20160222034550-6be7678c45d2
-- with
-  - github.com/lorenzosaino/go-sysctl v0.3.1
-- Upgraded
-  - upgraded github.com/BurntSushi/toml v1.3.2 => v1.6.0
-  - upgraded golang.org/x/exp/typeparams v0.0.0-20220613132600-b0d781184e0d => v0.0.0-20260410095643-746e56fc9e2f
-  - upgraded golang.org/x/lint v0.0.0-20210508222113-6edffad5e616 => v0.0.0-20241112194109-818c5a804067
-  - upgraded honnef.co/go/tools v0.3.2 => v0.7.0
-- go.sum updated
-- go.mod updated
-- Updated workflows for latest Trivy versions and scans
-- Updated release-build.sh script so able to run and test manually
+## Integration test infrastructure overhaul
+
+Based on [PR #1061](https://github.com/goss-org/goss/pull/1061) by [@kgaughan](https://github.com/kgaughan).
+
+Replaced the external `dnstest.io` dependency with a local dnsmasq zone, making DNS tests self-contained.
+
+### DNS infrastructure
+
+- Added `dnsmasq.conf` -- local authoritative zone for `dnstest.io` on port 8053
+- DNS tests now query `127.0.0.1:8053` instead of `8.8.8.8` (PTR tests remain on `8.8.8.8`)
+- Added `dnsmasq` service check to the shared test suite
+
+### Distributions
+
+- Added Debian Bullseye and Ubuntu Jammy with full test suites
+- Removed Ubuntu Trusty and Debian Wheezy (end of life); removed all `.md5` sidecar files
+- Alpine: upgraded to 3.20, added dnsmasq
+- Arch Linux: added dnsmasq and tinyproxy
+- RockyLinux 9: added dnsmasq
+
+### CI
+
+- Split `integration-test` into `integration-test-linux` and `integration-test-other`
+- Removed wheezy/trusty targets; added bullseye-32
+
+### Test runner fixes
+
+- Updated Docker build to use `--file Dockerfile_$os .` for build context
+- Added `DOCKER_BIN` env var support (defaults to `docker`)
+- Updated DNS probes in `generate_goss.sh` to use `127.0.0.1:8053`
+- Removed `http://google.com` from tests (HTTP port 80 blocked in containers)
+- Forced `Listen 0.0.0.0:80` in apache2/httpd config for bullseye, jammy, rockylinux9
+- Added missing `goss-aa-expected.yaml` golden files for bullseye and jammy
+
+## Go and dependency updates
+
+- Updated to Go 1.26
+- Replaced `github.com/achanda/go-sysctl` with `github.com/lorenzosaino/go-sysctl v0.3.1`
+- Upgraded `github.com/BurntSushi/toml` v1.3.2 => v1.6.0
+- Upgraded `golang.org/x/exp/typeparams`, `golang.org/x/lint`, `honnef.co/go/tools`
+- Updated CI workflows for latest Trivy versions
+- Updated `release-build.sh` for manual testing
