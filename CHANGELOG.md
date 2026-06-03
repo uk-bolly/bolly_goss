@@ -44,6 +44,8 @@ Replaced the external `dnstest.io` dependency with a local dnsmasq zone, making 
 - Updated golden files for `TestMatchers` to reflect updated gomega `ContainElements` error message (`iter.Seq/iter.Seq2` support)
 - Updated `semver_constraint_test.go` error message assertions to match lowercased strings
 
+#####
+## General updates
 ## Go and dependency updates
 
 - Updated to Go 1.26
@@ -52,3 +54,4 @@ Replaced the external `dnstest.io` dependency with a local dnsmasq zone, making 
 - Upgraded `golang.org/x/exp/typeparams`, `golang.org/x/lint`, `honnef.co/go/tools`
 - Updated CI workflows for latest Trivy versions
 - Updated `release-build.sh` for manual testing
+- github actions updated to later versions
