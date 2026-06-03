@@ -1,17 +1,17 @@
 package:
-  httpd:
+  apache2:
     installed: true
     versions:
-    - 2.4.62-13.el9_8.1
+    - 2.4.67-1~deb11u1
 port:
   tcp:80:
     listening: true
     ip:
     - 0.0.0.0
 service:
-  httpd:
+  apache2:
     enabled: true
     running: true
 process:
-  httpd:
+  apache2:
     running: true

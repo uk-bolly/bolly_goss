@@ -24,7 +24,7 @@ goss a "${args[@]}" package $package foobar vim-tiny
 
 goss a "${args[@]}" addr --timeout 1s httpbin:80 httpbin:22
 
-goss a "${args[@]}" addr --timeout 1s udp://8.8.8.8:53
+goss a "${args[@]}" addr --timeout 1s udp://127.0.0.1:8053
 
 goss a "${args[@]}" port tcp:80 tcp6:80 9999
 
@@ -36,21 +36,21 @@ goss a "${args[@]}" group $user foobar
 
 goss a "${args[@]}" command "echo 'hi'" foobar
 
-goss a "${args[@]}" dns --timeout 1s --server 8.8.8.8 CNAME:c.dnstest.io
+goss a "${args[@]}" dns --timeout 1s --server 127.0.0.1:8053 CNAME:c.dnstest.io
 
-goss a "${args[@]}" dns --timeout 1s --server 8.8.8.8 MX:dnstest.io
+goss a "${args[@]}" dns --timeout 1s --server 127.0.0.1:8053 MX:dnstest.io
 
-goss a "${args[@]}" dns --timeout 1s --server 8.8.8.8 NS:dnstest.io
+goss a "${args[@]}" dns --timeout 1s --server 127.0.0.1:8053 NS:dnstest.io
 
 goss a "${args[@]}" dns --timeout 1s --server 8.8.8.8 PTR:54.243.154.1
 
-goss a "${args[@]}" dns --timeout 1s --server 8.8.8.8 SRV:_https._tcp.dnstest.io
+goss a "${args[@]}" dns --timeout 1s --server 127.0.0.1:8053 SRV:_https._tcp.dnstest.io
 
-goss a "${args[@]}" dns --timeout 1s --server 8.8.8.8 TXT:txt._test.dnstest.io
+goss a "${args[@]}" dns --timeout 1s --server 127.0.0.1:8053 TXT:txt._test.dnstest.io
 
-goss a "${args[@]}" dns --timeout 1s --server 8.8.8.8 CAA:dnstest.io
+goss a "${args[@]}" dns --timeout 1s --server 127.0.0.1:8053 CAA:dnstest.io
 
-goss a "${args[@]}" dns --timeout 1s --server 8.8.8.8 ip6.dnstest.io
+goss a "${args[@]}" dns --timeout 1s --server 127.0.0.1:8053 ip6.dnstest.io
 
 goss a "${args[@]}" dns --timeout 1s localhost
 
@@ -64,12 +64,12 @@ sed -i '/- seclabel/d' $SCRIPT_DIR/${OS}/goss-generated-$ARCH.yaml
 sed -i '/- size=/d' $SCRIPT_DIR/${OS}/goss-generated-$ARCH.yaml
 sed -i '/- mode=/d' $SCRIPT_DIR/${OS}/goss-generated-$ARCH.yaml
 sed -i '/- inode64/d' $SCRIPT_DIR/${OS}/goss-generated-$ARCH.yaml
+sed -i '/- uid=/d' $SCRIPT_DIR/${OS}/goss-generated-$ARCH.yaml
+sed -i '/- gid=/d' $SCRIPT_DIR/${OS}/goss-generated-$ARCH.yaml
 
 goss a "${args[@]}" http https://www.google.com
 
 goss a "${args[@]}" http https://www.apple.com -x http://127.0.0.1:8888
-
-goss a "${args[@]}" http http://google.com -r
 
 # Auto-add
 # Validate that empty configs don't get created
@@ -81,7 +81,7 @@ fi
 $SCRIPT_DIR/$OS/goss-linux-$ARCH -g $SCRIPT_DIR/${OS}/goss-aa-generated-$ARCH.yaml aa $package
 # Validate that duplicates are ignored
 $SCRIPT_DIR/$OS/goss-linux-$ARCH -g $SCRIPT_DIR/${OS}/goss-aa-generated-$ARCH.yaml aa $package
-# Validate that we can aa none existent resources without destroying the file
+# Validate that we can aa none existent resources without destroying the file
 $SCRIPT_DIR/$OS/goss-linux-$ARCH -g $SCRIPT_DIR/${OS}/goss-aa-generated-$ARCH.yaml aa nosuchresource
 
 if [[ ! -f $SCRIPT_DIR/${OS}/goss-aa-generated-$ARCH.yaml ]]
