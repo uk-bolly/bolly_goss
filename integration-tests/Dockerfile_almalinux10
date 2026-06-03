@@ -1,7 +1,14 @@
-FROM centos:7.2.1511
-LABEL org.opencontainers.image.authors="Ahmed"
+FROM almalinux:10
 
-ENV container docker
+ENV container=docker
+
+RUN dnf install -y systemd httpd diffutils && \
+    dnf config-manager --enable crb && \
+    dnf install -y epel-release && \
+    dnf install -y tinyproxy dnsmasq && \
+    dnf remove -y epel-release && \
+    dnf clean all
+
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
     rm -f /lib/systemd/system/multi-user.target.wants/*;\
     rm -f /etc/systemd/system/*.wants/*;\
@@ -10,17 +17,15 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
     rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
     rm -f /lib/systemd/system/basic.target.wants/*;\
     rm -f /lib/systemd/system/anaconda.target.wants/*;
-VOLUME [ "/sys/fs/cgroup" ]
-CMD ["/usr/sbin/init"]
 
-RUN sed -i \
-      -e 's/^mirrorlist=/#mirrorlist=/g' \
-      -e 's|^#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' \
-      /etc/yum.repos.d/CentOS-Base.repo
-RUN yum -y --disablerepo='*' --enablerepo=base,extras install httpd epel-release && yum clean all
-RUN yum -y --disablerepo='*' --enablerepo=base,epel install tinyproxy && yum clean all
+RUN sed -i 's/^Listen 80$/Listen 0.0.0.0:80/' /etc/httpd/conf/httpd.conf
+
+COPY dnsmasq.conf /etc/dnsmasq.conf
+
+CMD ["/usr/sbin/init"]
 
 RUN systemctl enable httpd
 RUN systemctl enable tinyproxy
+RUN systemctl enable dnsmasq
 RUN chmod 700 ~root
 RUN mkfifo /pipe

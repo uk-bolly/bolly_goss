@@ -95,7 +95,7 @@ test-darwin-all: test-short-all test-int-darwin-all
 test-linux-all: test-short-all test-int-64 test-int-32
 test-windows-all: test-short-all test-int-windows-all
 
-test-int-64: rockylinux9 bullseye jammy alpine3 arch test-int-serve-linux-amd64
+test-int-64: rockylinux9 almalinux10 bullseye jammy alpine3 arch test-int-serve-linux-amd64
 test-int-32: rockylinux9-32 bullseye-32 alpine3-32
 test-int-darwin-all: test-int-validate-darwin-amd64 test-int-serve-darwin-amd64 test-int-validate-darwin-arm64 test-int-serve-darwin-arm64
 test-int-windows-all: test-int-validate-windows-amd64 test-int-serve-windows-amd64
@@ -108,6 +108,10 @@ centos7: build
 rockylinux9: build
 	$(info INFO: Starting build $@)
 	cd integration-tests/ && ./test.sh rockylinux9 amd64
+.PHONY: almalinux10
+almalinux10: build
+	$(info INFO: Starting build $@)
+	cd integration-tests/ && ./test.sh almalinux10 amd64
 .PHONY: bullseye
 bullseye: build
 	$(info INFO: Starting build $@)

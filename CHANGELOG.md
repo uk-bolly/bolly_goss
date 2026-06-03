@@ -34,6 +34,20 @@ Replaced the external `dnstest.io` dependency with a local dnsmasq zone, making 
 - Forced `Listen 0.0.0.0:80` in apache2/httpd config for bullseye, jammy, rockylinux9
 - Added missing `goss-aa-expected.yaml` golden files for bullseye and jammy
 
+## AlmaLinux 10 integration test support
+
+- Added `Dockerfile_almalinux10` based on the RockyLinux 9 pattern; uses dnf5's built-in `config-manager --enable crb` (no separate plugin install needed)
+- Added `integration-tests/goss/almalinux10/` with `goss.yaml`, `goss-expected-q.yaml`, `goss-expected.yaml`, and `goss-aa-expected.yaml`
+- Updated `goss-service.yaml` regex to include `almalinux10` in the httpd service branch
+- Updated `generate_goss.sh` OS check to use `httpd`/`apache` for `almalinux10`
+- Added `almalinux10` entry to `vars.yaml`
+- Added `almalinux10` Makefile target; added it to `test-int-64`
+
+
+## CentOS 7 EOL repo fix
+
+- Redirected yum to `vault.centos.org` in `Dockerfile_centos7` -- official mirrors were decommissioned after CentOS 7 EOL (June 2024)
+
 ## Docker image build fix
 
 - Fixed `docker-integration-tests` workflow: changed build context from `.` to `integration-tests/` so `COPY dnsmasq.conf` in Dockerfiles resolves against the directory where the file actually lives
