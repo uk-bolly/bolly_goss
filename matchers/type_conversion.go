@@ -31,7 +31,7 @@ func (t ToNumeric) Transform(e interface{}) (interface{}, error) {
 		s := i.(string)
 		return strconv.ParseFloat(strings.TrimSpace(s), 64)
 	default:
-		return 0, fmt.Errorf("Expected numeric, Got:%s", format.Object(e, 1))
+		return 0, fmt.Errorf("expected numeric, Got:%s", format.Object(e, 1))
 
 	}
 }
@@ -88,7 +88,7 @@ func (matcher ToArray) MarshalJSON() ([]byte, error) {
 //func (t ReaderToStrings) Transform(i interface{}) (interface{}, error) {
 //	r, ok := i.(io.Reader)
 //	if !ok {
-//		return nil, fmt.Errorf("Expected io.reader, Got:%s", format.Object(i, 1))
+//		return nil, fmt.Errorf("expected io.reader, Got:%s", format.Object(i, 1))
 //	}
 //	var lines []string
 //	i, err := ReaderToString{}.Transform(r)
@@ -104,7 +104,7 @@ type ReaderToString struct{}
 func (t ReaderToString) Transform(i interface{}) (interface{}, error) {
 	r, ok := i.(io.Reader)
 	if !ok {
-		return nil, fmt.Errorf("Expected io.reader, Got:%s", format.Object(i, 1))
+		return nil, fmt.Errorf("expected io.reader, Got:%s", format.Object(i, 1))
 	}
 
 	b, err := io.ReadAll(r)
@@ -121,14 +121,14 @@ type Gjson struct {
 func (g Gjson) Transform(i interface{}) (interface{}, error) {
 	s, ok := i.(string)
 	if !ok {
-		return nil, fmt.Errorf("Expected string, Got:%s", format.Object(i, 1))
+		return nil, fmt.Errorf("expected string, Got:%s", format.Object(i, 1))
 	}
 	if !gjson.Valid(s) {
-		return nil, fmt.Errorf("Invalid json")
+		return nil, fmt.Errorf("invalid json")
 	}
 	r := gjson.Get(s, g.Path)
 	if !r.Exists() {
-		return nil, fmt.Errorf("Path not found: %s", g.Path)
+		return nil, fmt.Errorf("path not found: %s", g.Path)
 	}
 
 	return r.Value(), nil

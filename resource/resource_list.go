@@ -78,7 +78,7 @@ func (ret *AddrMap) UnmarshalJSON(data []byte) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -107,7 +107,7 @@ func (ret *AddrMap) UnmarshalYAML(unmarshal func(v interface{}) error) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -179,7 +179,7 @@ func (ret *CommandMap) UnmarshalJSON(data []byte) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -208,7 +208,7 @@ func (ret *CommandMap) UnmarshalYAML(unmarshal func(v interface{}) error) error 
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -280,7 +280,7 @@ func (ret *DNSMap) UnmarshalJSON(data []byte) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -309,7 +309,7 @@ func (ret *DNSMap) UnmarshalYAML(unmarshal func(v interface{}) error) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -381,7 +381,7 @@ func (ret *FileMap) UnmarshalJSON(data []byte) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -410,7 +410,7 @@ func (ret *FileMap) UnmarshalYAML(unmarshal func(v interface{}) error) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -482,7 +482,7 @@ func (ret *GossfileMap) UnmarshalJSON(data []byte) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -511,7 +511,7 @@ func (ret *GossfileMap) UnmarshalYAML(unmarshal func(v interface{}) error) error
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -583,7 +583,7 @@ func (ret *GroupMap) UnmarshalJSON(data []byte) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -612,7 +612,7 @@ func (ret *GroupMap) UnmarshalYAML(unmarshal func(v interface{}) error) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -684,7 +684,7 @@ func (ret *PackageMap) UnmarshalJSON(data []byte) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -713,7 +713,7 @@ func (ret *PackageMap) UnmarshalYAML(unmarshal func(v interface{}) error) error 
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -785,7 +785,7 @@ func (ret *PortMap) UnmarshalJSON(data []byte) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -814,7 +814,7 @@ func (ret *PortMap) UnmarshalYAML(unmarshal func(v interface{}) error) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -886,7 +886,7 @@ func (ret *ProcessMap) UnmarshalJSON(data []byte) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -915,7 +915,7 @@ func (ret *ProcessMap) UnmarshalYAML(unmarshal func(v interface{}) error) error 
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -987,7 +987,7 @@ func (ret *ServiceMap) UnmarshalJSON(data []byte) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -1016,7 +1016,7 @@ func (ret *ServiceMap) UnmarshalYAML(unmarshal func(v interface{}) error) error 
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -1088,7 +1088,7 @@ func (ret *UserMap) UnmarshalJSON(data []byte) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -1117,7 +1117,7 @@ func (ret *UserMap) UnmarshalYAML(unmarshal func(v interface{}) error) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -1189,7 +1189,7 @@ func (ret *KernelParamMap) UnmarshalJSON(data []byte) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -1218,7 +1218,7 @@ func (ret *KernelParamMap) UnmarshalYAML(unmarshal func(v interface{}) error) er
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -1290,7 +1290,7 @@ func (ret *MountMap) UnmarshalJSON(data []byte) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -1319,7 +1319,7 @@ func (ret *MountMap) UnmarshalYAML(unmarshal func(v interface{}) error) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -1391,7 +1391,7 @@ func (ret *InterfaceMap) UnmarshalJSON(data []byte) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -1420,7 +1420,7 @@ func (ret *InterfaceMap) UnmarshalYAML(unmarshal func(v interface{}) error) erro
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -1492,7 +1492,7 @@ func (ret *HTTPMap) UnmarshalJSON(data []byte) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -1521,7 +1521,7 @@ func (ret *HTTPMap) UnmarshalYAML(unmarshal func(v interface{}) error) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}

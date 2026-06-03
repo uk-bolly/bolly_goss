@@ -28,7 +28,7 @@ func setLogLevel(c *util.Config) error {
 			return nil
 		}
 	}
-	return fmt.Errorf("Unsupported log level: %s", c.LogLevel)
+	return fmt.Errorf("unsupported log level: %s", c.LogLevel)
 }
 
 type timestampedWriter struct {

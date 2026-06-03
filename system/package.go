@@ -14,7 +14,7 @@ type Package interface {
 	Versions() ([]string, error)
 }
 
-var ErrNullPackage = errors.New("Could not detect Package type on this system, please use --package flag to explicity set it")
+var ErrNullPackage = errors.New("could not detect Package type on this system, please use --package flag to explicity set it")
 
 type NullPackage struct {
 	name string

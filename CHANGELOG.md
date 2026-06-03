@@ -34,6 +34,16 @@ Replaced the external `dnstest.io` dependency with a local dnsmasq zone, making 
 - Forced `Listen 0.0.0.0:80` in apache2/httpd config for bullseye, jammy, rockylinux9
 - Added missing `goss-aa-expected.yaml` golden files for bullseye and jammy
 
+## Linter upgrade and code fixes
+
+- Migrated `.golangci.yaml` config from v1 to v2 format
+- Updated CI workflow to golangci-lint v2.12.2
+- Removed `go install` of golangci-lint from Makefile (use pre-installed binary)
+- Fixed all lint failures: non-constant format strings, redundant type declarations, stale `//nolint` directive, De Morgan's law, conditional assignment simplification
+- Lowercased error strings throughout to comply with ST1005 (staticcheck)
+- Updated golden files for `TestMatchers` to reflect updated gomega `ContainElements` error message (`iter.Seq/iter.Seq2` support)
+- Updated `semver_constraint_test.go` error message assertions to match lowercased strings
+
 ## Go and dependency updates
 
 - Updated to Go 1.26

@@ -32,7 +32,7 @@ the raw value was
 
 Matching: test_gjson_invalid: matches:
 Error
-    matchers.Gjson{Path:"@this"}: Invalid json
+    matchers.Gjson{Path:"@this"}: invalid json
 the transform chain was
     [{"gjson":{"Path":"@this"}}]
 the raw value was
@@ -40,7 +40,7 @@ the raw value was
 
 Matching: test_gjson_not_found: matches:
 Error
-    matchers.Gjson{Path:"foo"}: Path not found: foo
+    matchers.Gjson{Path:"foo"}: path not found: foo
 the transform chain was
     [{"gjson":{"Path":"foo"}}]
 the raw value was

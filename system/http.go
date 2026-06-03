@@ -122,7 +122,7 @@ func (u *DefHTTP) setupReal() error {
 		roots := x509.NewCertPool()
 		ok := roots.AppendCertsFromPEM(caCert)
 		if !ok {
-			return fmt.Errorf("Failed parse root certificate: %s", u.CAFile)
+			return fmt.Errorf("failed parse root certificate: %s", u.CAFile)
 		}
 		tlsConfig.RootCAs = roots
 	}

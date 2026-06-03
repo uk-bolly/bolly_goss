@@ -39,10 +39,7 @@ func (r *Matching) GetTitle() string { return r.Title }
 func (r *Matching) GetMeta() meta    { return r.Meta }
 
 func (a *Matching) Validate(sys *system.System) []TestResult {
-	skip := false
-	if a.Skip {
-		skip = true
-	}
+	skip := a.Skip
 
 	var stub interface{}
 	if a.AsReader {
@@ -91,7 +88,7 @@ func (ret *MatchingMap) UnmarshalJSON(data []byte) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}
@@ -120,7 +117,7 @@ func (ret *MatchingMap) UnmarshalYAML(unmarshal func(v any) error) error {
 	typs := strings.Split(typ.String(), ".")[1]
 	for id, res := range tmp {
 		if res == nil {
-			return fmt.Errorf("Could not parse resource %s:%s", typs, id)
+			return fmt.Errorf("could not parse resource %s:%s", typs, id)
 		}
 		res.SetID(id)
 	}

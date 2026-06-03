@@ -131,7 +131,7 @@ func getMount(mountpoint string, timeout int) (*mountinfo.Info, error) {
 			return
 		}
 		if len(entries) == 0 {
-			e1 <- fmt.Errorf("Mountpoint not found")
+			e1 <- fmt.Errorf("mountpoint not found")
 			return
 		}
 		c1 <- entries[0]

@@ -85,7 +85,7 @@ func (h healthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	log.Printf("[TRACE] %v: requesting health probe", r.RemoteAddr)
 	resp := h.processAndEnsureCached(negotiatedContentType, outputer)
-	w.Header().Set(http.CanonicalHeaderKey("Content-Type"), negotiatedContentType) //nolint:gosimple
+	w.Header().Set("Content-Type", negotiatedContentType)
 	w.WriteHeader(resp.statusCode)
 	logBody := ""
 	if resp.statusCode != http.StatusOK {
@@ -176,7 +176,7 @@ func (h healthHandler) negotiateResponseContentType(r *http.Request) (string, ou
 		}
 	}
 	if outputer == nil {
-		return "", nil, fmt.Errorf("Accept header on request missing or invalid. Accept header: %v", acceptHeader)
+		return "", nil, fmt.Errorf("accept header on request missing or invalid. Accept header: %v", acceptHeader)
 	}
 
 	return outputName, outputer, nil

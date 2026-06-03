@@ -111,7 +111,7 @@ func TestBeSemverConstraintMatcher_Match(t *testing.T) {
 			want: want{
 				success:    false,
 				err:        true,
-				errMessage: "Expected a single or list of semver valid version(s).  Got:\n    <[]string | len:1, cap:1>: [\"4.4.019-1\"]",
+				errMessage: "expected a single or list of semver valid version(s).  Got:\n    <[]string | len:1, cap:1>: [\"4.4.019-1\"]",
 			},
 		},
 		{
@@ -121,7 +121,7 @@ func TestBeSemverConstraintMatcher_Match(t *testing.T) {
 			want: want{
 				success:    false,
 				err:        true,
-				errMessage: "Expected a single or list of semver valid version(s).  Got:\n    <[]string | len:1, cap:1>: [\n        \"4.4.019+build+build2\",\n    ]",
+				errMessage: "expected a single or list of semver valid version(s).  Got:\n    <[]string | len:1, cap:1>: [\n        \"4.4.019+build+build2\",\n    ]",
 			},
 		},
 		{
@@ -140,7 +140,7 @@ func TestBeSemverConstraintMatcher_Match(t *testing.T) {
 			want: want{
 				success:    false,
 				err:        true,
-				errMessage: "Expected a valid semver constraint.  Got:\n    <nil>: nil",
+				errMessage: "expected a valid semver constraint.  Got:\n    <nil>: nil",
 			},
 		},
 	}

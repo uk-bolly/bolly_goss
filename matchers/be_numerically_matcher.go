@@ -62,7 +62,7 @@ func strToSymbol(s string) (string, error) {
 		"eq": "==",
 	}[s]
 	if !ok {
-		return "", fmt.Errorf("Unknown comparator: %s", s)
+		return "", fmt.Errorf("unknown comparator: %s", s)
 	}
 	return comparator, nil
 }

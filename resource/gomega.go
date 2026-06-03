@@ -28,7 +28,7 @@ func matcherToGomegaMatcher(matcher any) (matchers.GossMatcher, error) {
 		return matchers.ContainElements(interfaceSlice...), nil
 	}
 	if matcher == nil {
-		return nil, fmt.Errorf("Syntax Error: Missing required attribute")
+		return nil, fmt.Errorf("syntax error: missing required attribute")
 	}
 	matcherMap, ok := matcher.(map[string]any)
 	if !ok {
@@ -37,7 +37,7 @@ func matcherToGomegaMatcher(matcher any) (matchers.GossMatcher, error) {
 	}
 	keys := lo.Keys(matcherMap)
 	if len(keys) > 1 {
-		return nil, fmt.Errorf("Syntax Error: Invalid matcher configuration. At a given nesting level, only one matcher is allowed. Found multiple matchers: %q", keys)
+		return nil, fmt.Errorf("syntax error: invalid matcher configuration. At a given nesting level, only one matcher is allowed. Found multiple matchers: %q", keys)
 	}
 	matchType := keys[0]
 	value := matcherMap[matchType]
@@ -169,7 +169,7 @@ func matcherToGomegaMatcher(matcher any) (matchers.GossMatcher, error) {
 		}
 		return matchers.And(subMatchers...), nil
 	default:
-		return nil, fmt.Errorf("Syntax Error: Unknown matcher: %s", matchType)
+		return nil, fmt.Errorf("syntax error: unknown matcher: %s", matchType)
 
 	}
 }
@@ -191,5 +191,5 @@ func sliceToGomega(value any, name string) ([]matchers.GossMatcher, error) {
 }
 
 func invalidArgSyntaxError(name, expected string, value any) error {
-	return fmt.Errorf("Syntax Error: Invalid '%s' argument. Expected %s value, but received: %T: %q", name, expected, value, value)
+	return fmt.Errorf("syntax error: invalid '%s' argument. Expected %s value, but received: %T: %q", name, expected, value, value)
 }
