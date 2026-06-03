@@ -78,7 +78,7 @@ jobs:
       - name: Build and push tag
         uses: docker/build-push-action@v7.2.0
         with:
-          context: .
+          context: integration-tests
           file: ${{ matrix.dockerfile }}
           push: true
           tags: |

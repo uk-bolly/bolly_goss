@@ -34,6 +34,19 @@ Replaced the external `dnstest.io` dependency with a local dnsmasq zone, making 
 - Forced `Listen 0.0.0.0:80` in apache2/httpd config for bullseye, jammy, rockylinux9
 - Added missing `goss-aa-expected.yaml` golden files for bullseye and jammy
 
+## Docker image build fix
+
+- Fixed `docker-integration-tests` workflow: changed build context from `.` to `integration-tests/` so `COPY dnsmasq.conf` in Dockerfiles resolves against the directory where the file actually lives
+
+## Darwin arm64 integration test support
+
+- Renamed `integration-tests/goss/darwin/` to `darwin-amd64/` for consistent platform-spec naming
+- Added `integration-tests/goss/darwin-arm64/` with matching `tests/` and `commands/` directories
+- Updated `commands/` yaml files in both arch directories to reference the correct binary (`goss-darwin-amd64` / `goss-darwin-arm64`)
+- Updated `run-validate-tests.sh` to select test files by platform-spec directory (e.g. `darwin-arm64/`) with a fallback to os-only directory for platforms not yet split by arch (e.g. `windows/`)
+- Extended `test-int-darwin-all` Makefile target to cover both amd64 and arm64
+- Updated CI workflow: added `macos-13` (Intel) alongside `macos-latest` (Apple Silicon) in the matrix; each runner now derives its arch via `go env GOARCH` and calls only its native-arch targets
+
 ## Linter upgrade and code fixes
 
 - Migrated `.golangci.yaml` config from v1 to v2 format
