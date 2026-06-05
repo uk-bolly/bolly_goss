@@ -45,6 +45,7 @@
 - `semver_constraint_test.go` assertions updated to match lowercased strings
 
 ## Integration tests
+- `goss-expected.yaml` updated for `rockylinux9`, `almalinux10`, `bullseye`, `jammy`, and `alpine3` to include `::1` in `localhost` DNS addresses
 - Thanks to [@kgaughan](https://github.com/kgaughan) for the integration test infrastructure overhaul
   ([PR #1061](https://github.com/goss-org/goss/pull/1061))
 - External `dnstest.io` dependency replaced with a local dnsmasq zone on `127.0.0.1:8053`, making DNS tests self-contained
