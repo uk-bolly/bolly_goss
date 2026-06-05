@@ -18,6 +18,8 @@
 
 ## Build targets
 - `linux/ppc64le` binary added to release builds
+- `darwin/arm64` (Apple Silicon) binary added to release builds
+- Removed 32-bit build and testing support
 
 ## Markdown lint fixes
 - `README.md` attribution blockquote moved below heading (MD041); long lines wrapped (MD013); `[here]` link text made descriptive (MD059)
@@ -42,7 +44,9 @@
 - `semver_constraint_test.go` assertions updated to match lowercased strings
 
 ## Integration tests
-- DNS tests moved off external `dnstest.io` to local dnsmasq zone on `127.0.0.1:8053`
+- Thanks to [@kgaughan](https://github.com/kgaughan) for the integration test infrastructure overhaul
+  ([PR #1061](https://github.com/goss-org/goss/pull/1061))
+- External `dnstest.io` dependency replaced with a local dnsmasq zone on `127.0.0.1:8053`, making DNS tests self-contained
 - Debian Bullseye and Ubuntu Jammy added with full test suites
 - Ubuntu Trusty and Debian Wheezy removed (end of life); `.md5` sidecar files removed
 - Alpine upgraded to 3.20; dnsmasq added
@@ -50,6 +54,6 @@
 - RockyLinux 9 dnsmasq added
 - `integration-test` CI job split into `integration-test-linux` and `integration-test-other`
 - AlmaLinux 10 integration test support added
-- Darwin arm64 integration tests added; `darwin/` renamed to `darwin-amd64/`
+- Integration test directories split by arch: `darwin/` renamed to `darwin-amd64/`; `darwin-arm64/` added
 - CI matrix extended with `macos-13` (Intel) alongside `macos-latest` (Apple Silicon)
 - `CentOS 7` yum redirected to `vault.centos.org` after EOL decommission
