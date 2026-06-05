@@ -10,6 +10,7 @@
 - `Makefile` release rule updated to pass `-p` and `-v` flags to `release-build.sh`
 
 ## CI
+- `macos-13` (Intel) removed from CI matrix -- deprecated and no longer available on GitHub Actions; Apple Silicon testing continues via `macos-latest`
 - `.travis.yml` removed; CI fully on GitHub Actions
 - `docs.yaml` lint job re-enabled; build/deploy remains disabled
 - `preview-docs.yaml` disabled
