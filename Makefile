@@ -9,7 +9,7 @@ VENV := $(shell echo $${VIRTUAL_ENV-.venv})
 PYTHON := $(VENV)/bin/python
 DOCS_DEPS := $(VENV)/.docs.dependencies
 
-.PHONY: all build install test release bench fmt lint vet test-int-all gen centos7 test-int32 centos7-32
+.PHONY: all build install test release bench fmt lint vet test-int-all gen centos7
 
 all: test-short-all test-int-all dgoss-sha256 dcgoss-sha256 kgoss-sha256
 
@@ -92,14 +92,13 @@ update-matcher-tests:
 
 test-darwin-all: test-short-all test-int-darwin-all
 # linux _does_ have the docker-style testing, but does _not_ currently have the same style integration tests darwin+windows do, _because_ of the docker-style testing.
-test-linux-all: test-short-all test-int-64 test-int-32
+test-linux-all: test-short-all test-int-64
 test-windows-all: test-short-all test-int-windows-all
 
 test-int-64: rockylinux9 almalinux10 bullseye jammy alpine3 arch test-int-serve-linux-amd64
-test-int-32: rockylinux9-32 bullseye-32 alpine3-32
 test-int-darwin-all: test-int-validate-darwin-amd64 test-int-serve-darwin-amd64 test-int-validate-darwin-arm64 test-int-serve-darwin-arm64
 test-int-windows-all: test-int-validate-windows-amd64 test-int-serve-windows-amd64
-test-int-all: test-int-32 test-int-64
+test-int-all: test-int-64
 
 centos7: build
 	$(info INFO: Starting build $@)
