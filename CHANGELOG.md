@@ -34,6 +34,19 @@ Replaced the external `dnstest.io` dependency with a local dnsmasq zone, making 
 - Forced `Listen 0.0.0.0:80` in apache2/httpd config for bullseye, jammy, rockylinux9
 - Added missing `goss-aa-expected.yaml` golden files for bullseye and jammy
 
+## Docs workflows partially disabled
+
+- `docs.yaml`: re-enabled lint job; updated `markdownlint-cli2-action` to `v23.2.0`; build/deploy job remains disabled via `if: false`
+- `preview-docs.yaml`: disabled via `if: false` on all jobs
+
+## CI cleanup
+
+- Removed `.travis.yml` -- CI fully migrated to GitHub Actions; Travis CI is no longer used
+
+## Dependabot configuration update
+
+- Updated `dependabot.yml` assignee and reviewer from `aelsabbahy` to `uk-bolly` for gomod updates
+
 ## AlmaLinux 10 integration test support
 
 - Added `Dockerfile_almalinux10` based on the RockyLinux 9 pattern; uses dnf5's built-in `config-manager --enable crb` (no separate plugin install needed)

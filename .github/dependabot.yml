@@ -8,9 +8,9 @@ updates:
       interval: "weekly"
       day: "saturday"
     assignees:
-      - "aelsabbahy"
+      - "uk-bolly"
     reviewers:
-      - "aelsabbahy"
+      - "uk-bolly"
     open-pull-requests-limit: 0
 
   - package-ecosystem: "github-actions"

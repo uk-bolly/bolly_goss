@@ -14,6 +14,7 @@ on:
 jobs:
   pull-request-links:
     name: Add preview link to pull-request
+    if: false
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
