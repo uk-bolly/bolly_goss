@@ -21,7 +21,7 @@ jobs:
 
       - name: Get version from tag
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
-        run: echo "TRAVIS_TAG=${{ github.ref_name }}" >> $GITHUB_ENV
+        run: echo "RELEASE_TAG=${{ github.ref_name }}" >> $GITHUB_ENV
 
       - run: make release
       - run: make dgoss-sha256 dcgoss-sha256 kgoss-sha256

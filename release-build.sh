@@ -21,10 +21,33 @@ usage() {
 # Default values
 platform_spec="linux-amd64"
 output_dir="release/"
-output_fname="goss-${platform_spec}"
+output_fname=""
 version_stamp="0.0.0"
 
-# Split platform_spec into platform/arch segments
+OPTSTRING="f:o:p:v:h"
+while getopts ${OPTSTRING} opt; do
+  case ${opt} in
+    f)
+      output_fname="${OPTARG}"
+      ;;
+    o)
+      output_dir="${OPTARG}"
+      ;;
+    p)
+      platform_spec="${OPTARG}"
+      ;;
+    v)
+      version_stamp="${OPTARG}"
+      ;;
+    h)
+      usage
+      ;;
+    *)      usage
+      ;;
+  esac
+done
+
+# Derive os/arch and output_fname after flags are parsed
 IFS='- ' read -r -a segments <<< "${platform_spec}"
 
 os="${segments[0]}"
@@ -34,6 +57,9 @@ if [[ "${segments[0]}" == "alpha" ]]; then
   arch="${segments[2]}"
 fi
 
+if [[ -z "${output_fname}" ]]; then
+  output_fname="goss-${platform_spec}"
+fi
 
 if [[ "${os}" == "windows" ]]; then
   output_fname="${output_fname}.exe"
@@ -67,30 +93,6 @@ hash() {
   (cd "$output_dir" && __sha256sum "${output_fname}" > "${output_fname}.sha256")
 
 }
-
-OPTSTRING="f:o:p:v:h"
-while getopts ${OPTSTRING} opt; do
-  case ${opt} in
-    f)
-      output_fname="${OPTARG}"
-      ;;
-    o)
-      output_dir="${OPTARG}"
-      ;;
-    p)
-      needs_arg=true;
-      platform_spec="${OPTARG}"
-      ;;
-    v)
-      version_stamp="${OPTARG}"
-      ;;
-    h)
-      usage
-      ;;
-    *)      usage
-      ;;
-  esac
-done
 
 output
 build_pkg
