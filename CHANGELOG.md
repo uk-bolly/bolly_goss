@@ -19,6 +19,12 @@
 ## Build targets
 - `linux/ppc64le` binary added to release builds
 
+## Markdown lint fixes
+- `README.md` attribution blockquote moved below heading (MD041); long lines wrapped (MD013); `[here]` link text made descriptive (MD059)
+- `docs/gossfile.md` long admonition line wrapped (MD013); `[here]` link text made descriptive (MD059)
+- `extras/dgoss/README.md` long line wrapped (MD013)
+- `extras/kgoss/README.md` table pipe separators spaced correctly (MD060)
+
 ## Go and dependencies
 - Updated to Go 1.26
 - Replaced `github.com/achanda/go-sysctl` with `github.com/lorenzosaino/go-sysctl v0.3.1`
