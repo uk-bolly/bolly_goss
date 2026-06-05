@@ -1,6 +1,10 @@
-> **Note:** This is a fork of the original [goss-org/goss](https://github.com/goss-org/goss) project created and maintained by [@aelsabbahy](https://github.com/aelsabbahy). All original work remains under the Apache 2.0 license and full credit goes to the original author for building such a solid foundation. This fork exists to enable newer features and fixes to be developed and released. We are deeply grateful for the effort and care that went into the original project and aim to continue it in the same spirit.
-
 # Goss - Quick and Easy server validation
+
+> **Note:** This is a fork of the original [goss-org/goss](https://github.com/goss-org/goss) project created and
+> maintained by [@aelsabbahy](https://github.com/aelsabbahy). All original work remains under the Apache 2.0 license
+> and full credit goes to the original author for building such a solid foundation. This fork exists to enable newer
+> features and fixes to be developed and released. We are deeply grateful for the effort and care that went into the
+> original project and aim to continue it in the same spirit.
 
 [![Build Status](https://travis-ci.org/goss-org/goss.svg?branch=master)](https://travis-ci.org/goss-org/goss)
 [![Github All Releases](https://img.shields.io/github/downloads/goss-org/goss/total.svg?maxAge=604800)](https://github.com/goss-org/goss/releases)
@@ -21,8 +25,8 @@ Also, user submitted wrapper scripts for Kubernetes [kgoss](https://github.com/g
 and Docker Compose [dcgoss](https://github.com/goss-org/goss/tree/master/extras/dcgoss).
 
 **Note:** For some Docker/Kubernetes healthcheck, health endpoint, and
-container ordering examples, see my blog post
-[here][kubernetes-simplified-health-checks].
+container ordering examples, see the
+[Docker/Kubernetes simplified health checks blog post][kubernetes-simplified-health-checks].
 
 ## Introduction
 

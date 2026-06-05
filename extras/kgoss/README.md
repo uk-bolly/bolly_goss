@@ -131,7 +131,7 @@ on a regular machine.
 The following environment variables effect the behavior of kgoss.
 
 Variable | Description | Default
----------|-------------|--------
+-------- | ----------- | -------
 GOSS\_PATH | Local location of a compatible goss binary to use in container | `$(which goss)`
 GOSS\_FILES\_PATH | Location of the goss yaml files | `.`
 GOSS\_KUBECTL\_BIN | Kubenetes client tool to use | `$(which kubectl)`
