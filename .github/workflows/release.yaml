@@ -47,5 +47,5 @@ jobs:
       - name: Attach to release
         uses: softprops/action-gh-release@v3.0.0
         with:
-          files: build/**
+          files: build/**/*
           fail_on_unmatched_files: true
