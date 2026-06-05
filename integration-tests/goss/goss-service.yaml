@@ -1,6 +1,6 @@
 ---
 service:
-  foobar:
+  webservice:
     enabled: false
     running: false
 {{ if .Env.OS | regexMatch "centos[7]|rockylinux[9]|almalinux10" }}

@@ -18,5 +18,3 @@ file:
     filetype: symlink
 gossfile:
   "../goss-shared.yaml": {}
-  bypath:
-    file: "../goss-dummy.yaml"

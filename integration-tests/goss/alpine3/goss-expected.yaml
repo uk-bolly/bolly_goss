@@ -43,7 +43,7 @@ service:
   apache2:
     enabled: true
     running: true
-  foobar:
+  webservice:
     enabled: false
     running: false
 user:
