@@ -1,3 +1,5 @@
+> **Note:** This is a fork of the original [goss-org/goss](https://github.com/goss-org/goss) project created and maintained by [@aelsabbahy](https://github.com/aelsabbahy). All original work remains under the Apache 2.0 license and full credit goes to the original author for building such a solid foundation. This fork exists to enable newer features and fixes to be developed and released. We are deeply grateful for the effort and care that went into the original project and aim to continue it in the same spirit.
+
 # Goss - Quick and Easy server validation
 
 [![Build Status](https://travis-ci.org/goss-org/goss.svg?branch=master)](https://travis-ci.org/goss-org/goss)
