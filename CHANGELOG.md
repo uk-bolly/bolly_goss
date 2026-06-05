@@ -16,6 +16,9 @@
 - `dependabot.yml` assignee and reviewer updated to `uk-bolly`
 - `docker-integration-tests` workflow build context corrected to `integration-tests/`
 
+## Build targets
+- `linux/ppc64le` binary added to release builds
+
 ## Go and dependencies
 - Updated to Go 1.26
 - Replaced `github.com/achanda/go-sysctl` with `github.com/lorenzosaino/go-sysctl v0.3.1`
