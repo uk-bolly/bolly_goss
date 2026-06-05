@@ -47,6 +47,8 @@
 ## Integration tests
 - `goss-expected.yaml` updated for `rockylinux9`, `almalinux10`, `bullseye`, `jammy`, and `alpine3` to include `::1` in `localhost` DNS addresses
 - `goss-shared.yaml` User-Agent regex relaxed to match any goss version string, not just strict semver
+- `goss-service.yaml` test service renamed from `foobar` to `webservice`; all distro `goss-expected.yaml` files updated to match
+- Redundant `bypath: goss-dummy.yaml` removed from all distro `goss.yaml` files; `goss-shared.yaml` is the single import point
 - Thanks to [@kgaughan](https://github.com/kgaughan) for the integration test infrastructure overhaul
   ([PR #1061](https://github.com/goss-org/goss/pull/1061))
 - External `dnstest.io` dependency replaced with a local dnsmasq zone on `127.0.0.1:8053`, making DNS tests self-contained
@@ -56,6 +58,7 @@
 - Arch Linux dnsmasq and tinyproxy added
 - RockyLinux 9 dnsmasq added
 - `integration-test` CI job split into `integration-test-linux` and `integration-test-other`
+- `integration-test-linux` further split into a per-distro matrix so each distro runs as an independent CI job
 - AlmaLinux 10 integration test support added
 - Integration test directories split by arch: `darwin/` renamed to `darwin-amd64/`; `darwin-arm64/` added
 - CI matrix extended with `macos-13` (Intel) alongside `macos-latest` (Apple Silicon)
