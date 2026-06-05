@@ -28,7 +28,7 @@ goss a "${args[@]}" addr --timeout 1s udp://127.0.0.1:8053
 
 goss a "${args[@]}" port tcp:80 tcp6:80 9999
 
-goss a "${args[@]}" service $package foobar
+goss a "${args[@]}" service $package webservice
 
 goss a "${args[@]}" user $user foobar
 
