@@ -103,4 +103,4 @@ Replaced the external `dnstest.io` dependency with a local dnsmasq zone, making 
 - Fixed `Makefile`: changed `./release-build.sh $*` to `./release-build.sh -p $*` so the platform-spec is passed as a flag rather than a positional argument
 - Added version injection to `Makefile` release rule via `-v`, falling back through `RELEASE_TAG` -> `git describe` -> `0.0.0`
 - Renamed `TRAVIS_TAG` to `RELEASE_TAG` in `Makefile` and `release.yaml` -- Travis CI was removed in a prior change
-- Fixed `release.yaml` `attach-assets` job: added `path: build` to the `download-artifact` step so the `build/**` glob resolves correctly
+- Fixed `release.yaml` `attach-assets` job: replaced `build/**/*` glob with explicit patterns matching the actual download paths (`release/*`, `extras/*/*goss`, `extras/*/*goss.sha256`) -- `download-artifact@v8` extracts to the workspace root rather than a `build/` subdirectory
