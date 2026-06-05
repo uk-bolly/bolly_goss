@@ -44,17 +44,23 @@ jobs:
 
   integration-test-linux:
     needs: [coverage]
-    name: Integration tests (linux)
+    name: Integration tests (linux/${{ matrix.distro }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        distro: [rockylinux9, almalinux10, bullseye, jammy, alpine3, arch, test-int-serve-linux-amd64]
     steps:
       - uses: actions/checkout@v6.0.3
+        with:
+          fetch-depth: 0
       - uses: actions/setup-go@v6.4.0
         with:
           go-version-file: go.mod
 
       - name: Integration tests
         shell: bash
-        run: make test-int-all
+        run: make ${{ matrix.distro }}
 
   integration-test-other:
     needs: [coverage]
