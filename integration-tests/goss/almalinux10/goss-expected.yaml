@@ -40,12 +40,12 @@ port:
     listening: false
     ip: []
 service:
-  webservice:
-    enabled: false
-    running: false
   httpd:
     enabled: true
     running: true
+  webservice:
+    enabled: false
+    running: false
 user:
   apache:
     exists: true
@@ -134,7 +134,6 @@ dns:
     resolvable: true
     addrs:
     - 127.0.0.1
-    - ::1
     timeout: 1000
 process:
   foobar:

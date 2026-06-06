@@ -13,7 +13,7 @@ package:
   apache2:
     installed: true
     versions:
-    - 2.4.52-1ubuntu4.20
+    - 2.4.52-1ubuntu4.21
   foobar:
     installed: false
   vim-tiny:
@@ -134,7 +134,6 @@ dns:
     resolvable: true
     addrs:
     - 127.0.0.1
-    - ::1
     timeout: 1000
 process:
   apache2:
