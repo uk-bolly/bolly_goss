@@ -30,12 +30,12 @@ port:
   tcp6:80:
     listening: false
 service:
-  webservice:
-    enabled: false
-    running: false
   httpd:
     enabled: true
     running: true
+  webservice:
+    enabled: false
+    running: false
 user:
   apache:
     exists: true
