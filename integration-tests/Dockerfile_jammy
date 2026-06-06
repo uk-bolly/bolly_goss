@@ -22,7 +22,7 @@ COPY dnsmasq.conf /etc/dnsmasq.conf
 RUN mkdir -p /var/log/tinyproxy && chown tinyproxy:tinyproxy /var/log/tinyproxy
 
 RUN mkdir -p /etc/systemd/system/tinyproxy.service.d && \
-    printf '[Service]\nPrivateDevices=no\n' > /etc/systemd/system/tinyproxy.service.d/override.conf
+    printf '[Service]\nType=simple\nExecStart=\nExecStart=/usr/bin/tinyproxy -d\nPIDFile=\nPrivateDevices=no\n' > /etc/systemd/system/tinyproxy.service.d/override.conf
 
 RUN systemctl enable apache2 tinyproxy dnsmasq
 RUN mkfifo /pipe
