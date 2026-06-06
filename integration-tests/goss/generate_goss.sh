@@ -53,6 +53,8 @@ goss a "${args[@]}" dns --timeout 1s --server 127.0.0.1:8053 CAA:dnstest.io
 goss a "${args[@]}" dns --timeout 1s --server 127.0.0.1:8053 ip6.dnstest.io
 
 goss a "${args[@]}" dns --timeout 1s localhost
+# docker injects ::1 for localhost; podman does not -- strip it for consistency
+sed -i '/^[[:space:]]*- ::1$/d' $SCRIPT_DIR/${OS}/goss-generated-$ARCH.yaml
 
 goss a "${args[@]}" process $package foobar
 
