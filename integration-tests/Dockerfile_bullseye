@@ -22,5 +22,8 @@ RUN sed -i 's/Listen 80/Listen 0.0.0.0:80/g' /etc/apache2/ports.conf
 
 COPY dnsmasq.conf /etc/dnsmasq.conf
 
+RUN mkdir -p /etc/systemd/system/tinyproxy.service.d && \
+    printf '[Service]\nExecStartPre=/bin/mkdir -p /run/tinyproxy\nExecStartPre=/bin/chown tinyproxy:tinyproxy /run/tinyproxy\nType=simple\nExecStart=\nExecStart=/usr/bin/tinyproxy -d\nPIDFile=\nPrivateDevices=no\n' > /etc/systemd/system/tinyproxy.service.d/override.conf
+
 RUN systemctl enable apache2 tinyproxy dnsmasq
 RUN mkfifo /pipe
