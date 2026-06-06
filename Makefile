@@ -100,31 +100,31 @@ test-int-darwin-all: test-int-validate-darwin-amd64 test-int-serve-darwin-amd64 
 test-int-windows-all: test-int-validate-windows-amd64 test-int-serve-windows-amd64
 test-int-all: test-int-64
 
-centos7: build
+centos7: release/goss-linux-amd64
 	$(info INFO: Starting build $@)
 	cd integration-tests/ && ./test.sh centos7 amd64
 .PHONY: rockylinux9
-rockylinux9: build
+rockylinux9: release/goss-linux-amd64
 	$(info INFO: Starting build $@)
 	cd integration-tests/ && ./test.sh rockylinux9 amd64
 .PHONY: almalinux10
-almalinux10: build
+almalinux10: release/goss-linux-amd64
 	$(info INFO: Starting build $@)
 	cd integration-tests/ && ./test.sh almalinux10 amd64
 .PHONY: bullseye
-bullseye: build
+bullseye: release/goss-linux-amd64
 	$(info INFO: Starting build $@)
 	cd integration-tests/ && ./test.sh bullseye amd64
 .PHONY: jammy
-jammy: build
+jammy: release/goss-linux-amd64
 	$(info INFO: Starting build $@)
 	cd integration-tests/ && ./test.sh jammy amd64
 .PHONY: alpine3
-alpine3: build
+alpine3: release/goss-linux-amd64
 	$(info INFO: Starting build $@)
 	cd integration-tests/ && ./test.sh alpine3 amd64
 .PHONY: arch
-arch: build
+arch: release/goss-linux-amd64
 	$(info INFO: Starting build $@)
 	cd integration-tests/ && ./test.sh arch amd64
 
