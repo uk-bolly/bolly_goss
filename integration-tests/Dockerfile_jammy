@@ -19,5 +19,7 @@ RUN sed -i 's/Listen 80/Listen 0.0.0.0:80/g' /etc/apache2/ports.conf
 
 COPY dnsmasq.conf /etc/dnsmasq.conf
 
+RUN mkdir -p /var/log/tinyproxy && chown tinyproxy:tinyproxy /var/log/tinyproxy
+
 RUN systemctl enable apache2 tinyproxy dnsmasq
 RUN mkfifo /pipe
