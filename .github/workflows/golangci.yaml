@@ -62,6 +62,41 @@ jobs:
         shell: bash
         run: make ${{ matrix.distro }}
 
+  integration-test-linux-ppc64le:
+    needs: [coverage]
+    name: Integration tests (linux/ppc64le)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.4.0
+        with:
+          go-version-file: go.mod
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+        with:
+          platforms: ppc64le
+      - name: Integration tests
+        shell: bash
+        run: make test-int-validate-linux-ppc64le test-int-serve-linux-ppc64le
+
+  integration-test-linux-arm64:
+    needs: [coverage]
+    name: Integration tests (linux/arm64)
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v6.0.3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.4.0
+        with:
+          go-version-file: go.mod
+
+      - name: Integration tests
+        shell: bash
+        run: make test-int-validate-linux-arm64 test-int-serve-linux-arm64
+
   integration-test-other:
     needs: [coverage]
     name: Integration tests (${{ matrix.os }})
