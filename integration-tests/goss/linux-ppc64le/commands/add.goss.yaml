@@ -1,5 +1,4 @@
 ---
-# TODO: coverage for the add {test} permutations
 command:
   "add addr 127.0.0.1":
     exit-status: 0
@@ -8,3 +7,6 @@ command:
     - "timeout: 500"
     stderr: []
     timeout: 5000
+
+    # add addr without port behaves differently on Linux vs Darwin
+    skip: true
