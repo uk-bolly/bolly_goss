@@ -17,6 +17,10 @@
 - `dependabot.yml` assignee and reviewer updated to `uk-bolly`
 - `docker-integration-tests` workflow build context corrected to `integration-tests/`
 
+## Security
+- `Dockerfile` final stage bumped from `alpine:3.19` to `alpine:3.21`; resolves CVE-2026-40200 and CVE-2026-6042 (`musl-utils`) and CVE-2025-46394 and CVE-2024-58251 (`ssl_client`/busybox), all fixed in Alpine 3.21
+- `Dockerfile` build stage `GO_VERSION` default updated from `1.22` to `1.26` to match `go.mod` requirement
+
 ## Build targets
 - `linux/ppc64le` binary added to release builds
 - `darwin/arm64` (Apple Silicon) binary added to release builds
