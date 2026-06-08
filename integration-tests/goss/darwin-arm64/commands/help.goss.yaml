@@ -4,6 +4,6 @@ command:
     exit-status: 0
     exec: "release/goss-darwin-arm64 help"
     stdout:
-      - alpha
+      - validate
     stderr: []
     timeout: 5000
