@@ -9,12 +9,10 @@ IFS='- ' read -r -a segments <<< "${platform_spec}"
 os="${segments[0]}"
 arch="${segments[1]}"
 
-if [[ "${os}" == "linux" ]]; then
-  echo "OS is ${os}. This script is not for running tests on the different flavours of linux."
-  echo "Linux is exercised via the integration-tests/test.sh currently, because linux can be"
-  echo "verified via docker containers; macOS and Windows cannot."
-  echo "This script is for macOS and Windows, and runs tests that are expected to pass on"
-  echo "Travis-CI provided images, running nakedly (no containerisation) on the hosts there."
+if [[ "${os}" == "linux" && "${arch}" == "amd64" ]]; then
+  echo "OS is ${os}/${arch}. This script is not for running tests on linux/amd64."
+  echo "linux/amd64 is exercised via the integration-tests/test.sh using Docker containers."
+  echo "Non-amd64 Linux architectures (e.g. arm64) are tested here since no Docker containers exist for them."
   exit 1
 fi
 
