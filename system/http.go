@@ -34,8 +34,9 @@ type DefHTTP struct {
 	allowInsecure     bool
 	noFollowRedirects bool
 	resp              *http.Response
-	RequestHeader     http.Header
-	RequestBody       string
+	RequestHeader      http.Header
+	RequestQueryParams map[string][]string
+	RequestBody        string
 	Timeout           int
 	loaded            bool
 	err               error
@@ -64,8 +65,9 @@ func NewDefHTTP(_ context.Context, httpStr string, system *System, config util.C
 		allowInsecure:     config.AllowInsecure,
 		Method:            config.Method,
 		noFollowRedirects: config.NoFollowRedirects,
-		RequestHeader:     headers,
-		RequestBody:       config.RequestBody,
+		RequestHeader:      headers,
+		RequestQueryParams: config.RequestQueryParams,
+		RequestBody:        config.RequestBody,
 		Timeout:           config.TimeOutMilliSeconds(),
 		Username:          config.Username,
 		Password:          config.Password,
@@ -157,6 +159,16 @@ func (u *DefHTTP) setupReal() error {
 		return err
 	}
 	req.Header = u.RequestHeader.Clone()
+
+	if u.RequestQueryParams != nil {
+		qParams := req.URL.Query()
+		for k, params := range u.RequestQueryParams {
+			for _, param := range params {
+				qParams.Add(k, param)
+			}
+		}
+		req.URL.RawQuery = qParams.Encode()
+	}
 
 	if host := req.Header.Get("Host"); host != "" {
 		req.Host = host

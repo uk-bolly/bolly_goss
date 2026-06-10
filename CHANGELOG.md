@@ -16,6 +16,10 @@
 - `docker/setup-qemu-action` in CI to support transparent ppc64le binary execution without a container wrapper
 - `.claude/agents/test-runner.md` agent for running integration tests in parallel
 
+### PRs Incorporated
+
+- [#1013](https://github.com/goss-org/goss/pull/1013) -- `http` resource: `request-query-params` added to support URL query parameters with proper encoding and duplicate key support; thanks to [@riton](https://github.com/riton)
+
 ### Changed
 - `CODEOWNERS` updated to `@uk-bolly`
 - `dependabot.yml` -- `docker` ecosystem added for Dockerfile base image tracking; assignees and reviewers added to all entries; `open-pull-requests-limit: 0` removed from gomod entry
