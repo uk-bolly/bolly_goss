@@ -30,23 +30,23 @@ type HTTP interface {
 }
 
 type DefHTTP struct {
-	http              string
-	allowInsecure     bool
-	noFollowRedirects bool
-	resp              *http.Response
+	http               string
+	allowInsecure      bool
+	noFollowRedirects  bool
+	resp               *http.Response
 	RequestHeader      http.Header
 	RequestQueryParams map[string][]string
 	RequestBody        string
-	Timeout           int
-	loaded            bool
-	err               error
-	Username          string
-	Password          string
-	CAFile            string
-	CertFile          string
-	KeyFile           string
-	Method            string
-	Proxy             string
+	Timeout            int
+	loaded             bool
+	err                error
+	Username           string
+	Password           string
+	CAFile             string
+	CertFile           string
+	KeyFile            string
+	Method             string
+	Proxy              string
 }
 
 func NewDefHTTP(_ context.Context, httpStr string, system *System, config util.Config) HTTP {
@@ -61,20 +61,20 @@ func NewDefHTTP(_ context.Context, httpStr string, system *System, config util.C
 		headers.Add(str[0], str[1])
 	}
 	return &DefHTTP{
-		http:              httpStr,
-		allowInsecure:     config.AllowInsecure,
-		Method:            config.Method,
-		noFollowRedirects: config.NoFollowRedirects,
+		http:               httpStr,
+		allowInsecure:      config.AllowInsecure,
+		Method:             config.Method,
+		noFollowRedirects:  config.NoFollowRedirects,
 		RequestHeader:      headers,
 		RequestQueryParams: config.RequestQueryParams,
 		RequestBody:        config.RequestBody,
-		Timeout:           config.TimeOutMilliSeconds(),
-		Username:          config.Username,
-		Password:          config.Password,
-		CAFile:            config.CAFile,
-		CertFile:          config.CertFile,
-		KeyFile:           config.KeyFile,
-		Proxy:             config.Proxy,
+		Timeout:            config.TimeOutMilliSeconds(),
+		Username:           config.Username,
+		Password:           config.Password,
+		CAFile:             config.CAFile,
+		CertFile:           config.CertFile,
+		KeyFile:            config.KeyFile,
+		Proxy:              config.Proxy,
 	}
 }
 

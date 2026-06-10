@@ -24,7 +24,7 @@ type GossConfig struct {
 	Interfaces   resource.InterfaceMap   `json:"interface,omitempty" yaml:"interface,omitempty"`
 	HTTPs        resource.HTTPMap        `json:"http,omitempty" yaml:"http,omitempty"`
 	Matchings    resource.MatchingMap    `json:"matching,omitempty" yaml:"matching,omitempty"`
-	Registries   resource.RegistryMap   `json:"registry,omitempty" yaml:"registry,omitempty"`
+	Registries   resource.RegistryMap    `json:"registry,omitempty" yaml:"registry,omitempty"`
 }
 
 func NewGossConfig() *GossConfig {
