@@ -1,5 +1,7 @@
 # Goss - Quick and Easy server validation
 
+# This has been moved to https://github.com/krameff/goss
+
 > **Note:** This is a fork of the original [goss-org/goss](https://github.com/goss-org/goss) project created and
 > maintained by [@aelsabbahy](https://github.com/aelsabbahy). All original work remains under the Apache 2.0 license
 > and full credit goes to the original author for building such a solid foundation. This fork exists to enable newer
